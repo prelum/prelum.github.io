@@ -67,14 +67,15 @@ pre {
   white-space: nowrap;
 }
 
+/* Side gutters only: vertical spacing belongs to each section. */
 .wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding-inline: 32px;
 }
 @media (max-width: 700px) {
   .wrap {
-    padding: 0 16px;
+    padding-inline: 16px;
   }
 }
 
@@ -149,7 +150,7 @@ pre {
 /* Hero */
 .hero {
   padding-top: 72px;
-  padding-bottom: 96px;
+  padding-bottom: 64px;
 }
 .hero h1 {
   margin: 20px 0 28px;
@@ -205,9 +206,16 @@ pre {
 }
 
 /* Sections */
+/* Neighbouring sections add up: 64 + 64 = 128px between them. */
 section {
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+@media (max-width: 700px) {
+  section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
 }
 h2 {
   margin: 12px 0 16px;
@@ -382,6 +390,16 @@ pre.terminal {
   max-width: 560px;
   margin: 0 auto 32px;
   color: var(--body);
+}
+.open .actions {
+  justify-content: center;
+  align-items: stretch;
+}
+.open .button-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 22px;
+  font-size: 14px;
 }
 
 /* Footer */
