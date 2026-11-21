@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>prelum — Markdown in. Beautiful PDF out.</title>
+  <meta name="description" content="An open-source CLI that turns Markdown into designed PDFs: cover, running headers, page numbers, Mermaid diagrams. Pick a theme, write no CSS. Works offline.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/icon-512.png">
+  <link rel="alternate" hreflang="pt-BR" href="https://prelum.github.io/pt/">
+  <meta property="og:title" content="prelum — Markdown in. Beautiful PDF out.">
+  <meta property="og:description" content="Designed PDFs from Markdown. Pick a theme, write no CSS. Works offline.">
+  <meta property="og:image" content="https://prelum.github.io/images/og-image.png">
+  <meta property="og:url" content="https://prelum.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="wordmark" href="./" aria-label="prelum, home">prelum</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#themes">Themes</a></li>
+        <li><a href="#start">Get started</a></li>
+        <li><a href="https://github.com/prelum/prelum#readme">Docs</a></li>
+        <li><a class="button-outline" href="https://github.com/prelum/prelum">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero">
+      <span class="label">Open source · MIT · Works offline</span>
+      <h1>Markdown in.<br>Beautiful PDF out.</h1>
+      <p>Reports, documentation and proposals with a cover, running headers and “Page&nbsp;2&nbsp;of&nbsp;4”, without a line of CSS. Pick a theme and deliver.</p>
+      <div class="actions">
+        <div class="command">
+          <code><span class="prompt">$</span> npx prelum report.md</code>
+          <button type="button" data-copy="npx prelum report.md" data-done="copied">copy</button>
+        </div>
+        <a class="cta" href="#themes">See the themes →</a>
+      </div>
+    </div>
+
+    <section class="wrap" aria-labelledby="compare-title">
+      <span class="label">Before and after</span>
+      <h2 id="compare-title">The same file.<br>Two different documents.</h2>
+      <p class="lead">On the left, a Markdown report printed with GitHub’s stylesheet. On the right, the same file through prelum’s <code>report</code> theme.</p>
+      <div class="compare">
+        <figure>
+          <img src="images/before-github-css.png" alt="A report printed with GitHub's Markdown stylesheet: underlined headings, a gridded table, a purple diagram." width="892" height="1262" loading="lazy">
+          <figcaption>GitHub Markdown CSS</figcaption>
+        </figure>
+        <figure>
+          <img src="images/feasibility-study-2.png" alt="The same report printed by prelum: serif headings, quiet table rules, the diagram in the theme's colors, a running header and page numbers." width="892" height="1262" loading="lazy">
+          <figcaption><strong>prelum</strong> · report theme</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="features">
+      <ol class="wrap">
+        <li>
+          <span class="label">01</span>
+          <h3>Themes, not CSS</h3>
+          <p>One line in the frontmatter changes the whole look. You never touch a stylesheet.</p>
+        </li>
+        <li>
+          <span class="label">02</span>
+          <h3>Real pagination</h3>
+          <p>Cover, running headers, “Page&nbsp;2&nbsp;of&nbsp;4”, and tables that break across pages with their header repeated.</p>
+        </li>
+        <li>
+          <span class="label">03</span>
+          <h3>Mermaid, offline</h3>
+          <p>Diagrams drawn in the theme’s colors. Fonts and Mermaid ship with the package: nothing leaves your machine.</p>
+        </li>
+        <li>
+          <span class="label">04</span>
+          <h3>The same PDF everywhere</h3>
+          <p>Bundled fonts on every machine. With <code>SOURCE_DATE_EPOCH</code>, the same file prints the same bytes.</p>
+        </li>
+      </ol>
+    </div>
+
+    <section class="wrap" id="themes" aria-labelledby="themes-title">
+      <span class="label">Themes</span>
+      <h2 id="themes-title">Two themes.<br>Zero configuration.</h2>
+      <p class="lead">Set <code>theme:</code> in the frontmatter, or pass <code>--theme</code>. Every page below is real output.</p>
+      <div class="themes">
+        <article class="theme">
+          <div>
+            <h3><code>report</code></h3>
+            <p>The default. Editorial serif titles over a clean grotesque, for proposals, feasibility studies and consulting reports.</p>
+            <a class="pdf" href="https://github.com/prelum/prelum/blob/main/examples/feasibility-study.pdf">Open the PDF →</a>
+          </div>
+          <div class="pages">
+            <figure><img src="images/feasibility-study-1.png" alt="report theme: cover with the red square, the title in Newsreader and the client's name." width="892" height="1262" loading="lazy"></figure>
+            <figure><img src="images/feasibility-study-2.png" alt="report theme: a page with headers, a list, a diagram and a table." width="892" height="1262" loading="lazy"></figure>
+          </div>
+        </article>
+        <article class="theme">
+          <div>
+            <h3><code>technical</code></h3>
+            <p>All sans, a blue accent and dark code blocks, for documentation, implementation reports and runbooks.</p>
+            <a class="pdf" href="https://github.com/prelum/prelum/blob/main/examples/runbook.pdf">Open the PDF →</a>
+          </div>
+          <div class="pages">
+            <figure><img src="images/runbook-1.png" alt="technical theme: cover with a bold title over a blue rule." width="892" height="1262" loading="lazy"></figure>
+            <figure><img src="images/runbook-2.png" alt="technical theme: a page with a checklist, a sequence diagram and code blocks." width="892" height="1262" loading="lazy"></figure>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="start" aria-labelledby="start-title">
+      <span class="label">Get started</span>
+      <h2 id="start-title">One command.</h2>
+      <p class="lead">No install step: <code>npx</code> fetches prelum the first time.</p>
+      <div class="steps">
+<pre class="terminal"><code><span class="dim">$</span> npx prelum report.md
+
+  prelum<span class="square">■</span> 0.1.0
+
+  <span class="ok">✓</span> <span class="dim">markdown    </span>157 words
+  <span class="ok">✓</span> <span class="dim">mermaid     </span>1 diagram
+  <span class="ok">✓</span> <span class="dim">theme       </span>report
+  <span class="ok">✓</span> <span class="dim">pages       </span>cover, 3 pages
+
+  <span class="square">■</span> report.pdf ready in 0.9 s</code></pre>
+        <ul class="requirements">
+          <li><strong>Node 22</strong> or later.</li>
+          <li><strong>Chrome or Edge</strong>, already on your machine: nothing large is downloaded. With neither, run <code>npx playwright install chromium</code> once.</li>
+          <li><strong>Frontmatter</strong> sets the title, client, author, date, theme, cover and language. <a href="https://github.com/prelum/prelum#frontmatter">See all fields →</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap open" aria-labelledby="open-title">
+      <span class="label">Open source</span>
+      <h2 id="open-title">MIT licensed.<br>Free to use.</h2>
+      <p>prelum is a small tool built in the open. Issues, ideas and themes are welcome on GitHub.</p>
+      <a class="button-outline" href="https://github.com/prelum/prelum">github.com/prelum/prelum</a>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <a class="wordmark" href="./">prelum</a>
+    <ul>
+      <li><a href="https://github.com/prelum/prelum">GitHub</a></li>
+      <li><a href="https://www.npmjs.com/package/prelum">npm</a></li>
+      <li><a href="pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+    </ul>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
