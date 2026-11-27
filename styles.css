@@ -36,8 +36,9 @@
   --sans: "Schibsted Grotesk", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --sheet-shadow: 0 1px 2px rgba(28, 26, 23, 0.08), 0 8px 24px rgba(28, 26, 23, 0.08);
-  /* Motion: a strong ease-out for anything that responds to the user. */
+  /* Motion: strong curves, shared with script.js through CustomEase. */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 * {
@@ -194,6 +195,28 @@ pre {
 }
 .command button:hover {
   border-color: var(--paper);
+}
+/* "copy" and "copied" share one grid cell: the button is as wide as the
+   longer word and never jumps. The swap is a crossfade with a little blur,
+   so it reads as one label changing, not two swapping. */
+.command button.is-swap {
+  display: grid;
+  justify-items: center;
+}
+.command button.is-swap > span {
+  grid-area: 1 / 1;
+  transition:
+    opacity 200ms ease,
+    filter 200ms ease;
+}
+.command button.is-swap > span + span,
+.command button.is-copied > span:first-child {
+  opacity: 0;
+  filter: blur(2px);
+}
+.command button.is-copied > span + span {
+  opacity: 1;
+  filter: none;
 }
 .cta {
   display: inline-block;
@@ -460,12 +483,11 @@ footer ul {
 }
 
 /* Hide the hero before the first paint, so it does not flash and then
-   animate. If script.js never runs, the fallback shows it after 1.5 s. */
-@media (prefers-reduced-motion: no-preference) {
-  .js .hero > * {
-    visibility: hidden;
-    animation: reveal-fallback 0s 1.5s forwards;
-  }
+   animate (with reduced motion it only fades). If script.js never runs,
+   the fallback shows it after 1.5 s. */
+.js .hero > * {
+  visibility: hidden;
+  animation: reveal-fallback 0s 1.5s forwards;
 }
 @keyframes reveal-fallback {
   to {
@@ -504,6 +526,54 @@ footer ul {
   inset: 0 auto 0 -1px;
   width: 2px;
   background: var(--vermilion);
+}
+
+/* Once the wipe settles, a handle appears and the line can be dragged
+   (or moved with the arrow keys). Exit is faster than enter. */
+.compare.is-ready {
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+.wipe-handle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--vermilion);
+  color: #ffffff;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition:
+    opacity 150ms var(--ease-out),
+    transform 150ms var(--ease-out),
+    visibility 0s 150ms;
+}
+.is-ready .wipe-handle {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 250ms var(--ease-out),
+    transform 250ms var(--ease-out),
+    visibility 0s;
+}
+.is-ready .wipe-handle:active {
+  transform: translate(-50%, -50%) scale(0.95);
+  transition-duration: 160ms;
+}
+.wipe-handle:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.wipe-handle svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* The terminal plays its output line by line. */
