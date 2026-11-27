@@ -15,6 +15,7 @@
   <meta property="og:url" content="https://prelum.github.io/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
   <main>
     <div class="wrap hero">
       <span class="label">Open source · MIT · Works offline</span>
-      <h1>Markdown in.<br>Beautiful PDF out.</h1>
+      <h1><span class="line"><span>Markdown in.</span></span> <span class="line"><span>Beautiful PDF out.</span></span></h1>
       <p>Reports, documentation and proposals with a cover, running headers and “Page&nbsp;2&nbsp;of&nbsp;4”, without a line of CSS. Pick a theme and deliver.</p>
       <div class="actions">
         <div class="command">
@@ -48,7 +49,7 @@
       <span class="label">Before and after</span>
       <h2 id="compare-title">The same file.<br>Two different documents.</h2>
       <p class="lead">On the left, a Markdown report printed with GitHub’s stylesheet. On the right, the same file through prelum’s <code>report</code> theme.</p>
-      <div class="compare">
+      <div class="compare" data-slider-label="Drag to compare">
         <figure>
           <img src="images/before-github-css.png" alt="A report printed with GitHub's Markdown stylesheet: underlined headings, a gridded table, a purple diagram." width="892" height="1262" loading="lazy">
           <figcaption>GitHub Markdown CSS</figcaption>
@@ -159,6 +160,9 @@
     </ul>
   </footer>
 
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/CustomEase.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

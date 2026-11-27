@@ -15,6 +15,7 @@
   <meta property="og:url" content="https://prelum.github.io/pt/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="../fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
   <main>
     <div class="wrap hero">
       <span class="label">Open source · MIT · Funciona offline</span>
-      <h1>Markdown entra.<br>PDF bonito sai.</h1>
+      <h1><span class="line"><span>Markdown entra.</span></span> <span class="line"><span>PDF bonito sai.</span></span></h1>
       <p>Relatórios, documentação e propostas com capa, cabeçalho e “Página&nbsp;2&nbsp;de&nbsp;4”, sem escrever uma linha de CSS. Escolha um tema e entregue.</p>
       <div class="actions">
         <div class="command">
@@ -48,7 +49,7 @@
       <span class="label">Antes e depois</span>
       <h2 id="comparar-titulo">O mesmo arquivo.<br>Dois documentos diferentes.</h2>
       <p class="lead">À esquerda, um relatório em Markdown impresso com a folha de estilo do GitHub. À direita, o mesmo arquivo pelo tema <code>report</code> do prelum.</p>
-      <div class="compare">
+      <div class="compare" data-slider-label="Arraste para comparar">
         <figure>
           <img src="../images/before-github-css.png" alt="Um relatório impresso com o CSS de Markdown do GitHub: títulos sublinhados, tabela em grade, diagrama roxo." width="892" height="1262" loading="lazy">
           <figcaption>CSS de Markdown do GitHub</figcaption>
@@ -159,6 +160,9 @@
     </ul>
   </footer>
 
+  <script src="../vendor/gsap.min.js" defer></script>
+  <script src="../vendor/ScrollTrigger.min.js" defer></script>
+  <script src="../vendor/CustomEase.min.js" defer></script>
   <script src="../script.js" defer></script>
 </body>
 </html>
